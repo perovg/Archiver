@@ -73,7 +73,8 @@ match sys.argv:
                     keys_string += i + keys_dictionary[i] + '||'
                 keys_string += '$'
                 return keys_string
-
+            if (encode_file[-4:] != ".txt"):
+                exit(print("Error: Invalid file name"))
             file_from = open(encode_file, encoding='utf-8')
             read_file = file_from.read()
 
@@ -128,6 +129,8 @@ match sys.argv:
                 keys_dict = dict(zip(values, key))
                 return keys_dict
 
+            if (decode_file[-5:] != ".prar"):
+                exit(print("Error: Invalid file name"))
             file_from = open(decode_file, 'rb').read()
             read_file = file_from.decode('utf-8')
 
@@ -145,6 +148,8 @@ match sys.argv:
         decoding()
 
     case _, 'caesar', '-e', encode_file:  # Encoding a file using the Caesar cipher
+        if (encode_file[-4:] != ".txt"):
+            exit(print("Error: Invalid file name"))
         file_from = open(encode_file, encoding='utf-8')
         file_to_name = list(str(encode_file).split("."))[0] + "_caesar.txt"
         read_file = file_from.read()
@@ -166,6 +171,8 @@ match sys.argv:
         file_to.close()
 
     case _, 'caesar', '-d', decode_file:  # Decoding a file encoded by the Caesar cipher
+        if (decode_file[-11:] != "_caesar.txt"):
+            exit(print("Error: Invalid file name"))
         file_from = open(decode_file, 'rb').read()
         read_file = file_from.decode('utf-8')
         file_to_name = list(str(decode_file).split("."))[0].split("_")[0] + ".txt"
