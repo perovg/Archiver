@@ -131,16 +131,16 @@ class Shennon:
         return binn
     
     @staticmethod
-    def expand(st, extra_char):  # Finding an almost decrypted string
-        string = ''
-        for i in st:
+    def expand(string, extra_char):  # Finding an almost decrypted string
+        output_string = ''
+        for i in string:
             sym = str(bin(ord(i))[2:])
             while len(sym) % 8 != 0:
                 sym = '0' + sym
-            string += sym
+            output_string += sym
         if extra_char != 0:
-            string = string[:-extra_char]
-        return string
+            output_string = output_string[:-extra_char]
+        return output_string
     
     @staticmethod
     def search_keys(string, sim, delimiter):  # Reading encryption keys at the beginning of a file
