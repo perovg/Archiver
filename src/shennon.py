@@ -2,9 +2,9 @@ from math import copysign, fabs, floor, isfinite, modf, ceil, log
 
 
 class Shennon:
-    """--------------------ENCODING--------------------"""
+    # --------------------ENCODING--------------------
 
-    """ Main encoding method """
+    """ Main encoding method. """
     @staticmethod
     def encoding(encode_file):
         with open(encode_file, encoding='utf-8') as file_from:
@@ -23,7 +23,7 @@ class Shennon:
             file_to.write(less)
             file_to.close()
 
-    """ Translation the file to encrypted form """
+    """ Translation the file to encrypted form. """
     @staticmethod
     def encode(string, key):
         binary_string = ''
@@ -35,7 +35,7 @@ class Shennon:
                 substring = ''
         return binary_string
 
-    """ Converting fractional numbers to binary number system """
+    """ Converting fractional numbers to binary number system. """
     @staticmethod
     def bi(fractional_number):
         if not isfinite(fractional_number):
@@ -47,7 +47,7 @@ class Shennon:
         assert denominator & (denominator - 1) == 0  # power of two
         return f'{sign}{floor(fint):b}.{numerator:0{denominator.bit_length() - 1}b}'
 
-    """ Determining encryption keys """
+    """ Determining encryption keys. """
     @staticmethod
     def shennon(string):
         statistics = {}
@@ -79,7 +79,7 @@ class Shennon:
             keys_dict[sym] = sim[sym][:auxiliary_dict[sym]]
         return keys_dict
 
-    """ File compression """
+    """ File compression. """
     @staticmethod
     def compress(string):
         cnt = 0
@@ -93,7 +93,7 @@ class Shennon:
             text += sym
         return text, cnt
 
-    """ Preparing encryption keys for recording """
+    """ Preparing encryption keys for recording. """
     @staticmethod
     def write_keys(keys_dictionary):
         keys_string = ''
@@ -102,9 +102,9 @@ class Shennon:
         keys_string += '$'
         return keys_string
 
-    """-------------------DECODING--------------------"""
+    # -------------------DECODING--------------------
 
-    """ Main decoding method """
+    """ Main decoding method. """
     @staticmethod
     def decoding(decode_file):
         with open(decode_file, 'rb').read() as file_from:
@@ -122,7 +122,7 @@ class Shennon:
             file_to.write(Shennon.decode(decoded_file, keys))
             file_to.close()
 
-    """ Translated file from encrypted form """
+    """ Translated file from encrypted form. """
     @staticmethod
     def decode(string, key):
         binary_string = ''
@@ -134,7 +134,7 @@ class Shennon:
                 substring = ''
         return binary_string
 
-    """ Finding an almost decrypted string """
+    """ Finding an almost decrypted string. """
     @staticmethod
     def expand(string, extra_char):
         output_string = ''
@@ -147,7 +147,7 @@ class Shennon:
             output_string = output_string[:-extra_char]
         return output_string
 
-    """ Reading encryption keys at the beginning of a file """
+    """ Reading encryption keys at the beginning of a file. """
     @staticmethod
     def search_keys(string, sim, delimiter):
         header_string = ''

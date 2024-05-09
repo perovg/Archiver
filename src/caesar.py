@@ -1,7 +1,7 @@
 import math
 
 
-"""----------------WORK WITH FILES----------------"""
+# ----------------WORK WITH FILES----------------
 
 
 def read_file_contents(filename):
@@ -15,7 +15,7 @@ def write_file_contents(filename, contents, mode='w'):
 
 
 class Caesar:
-    """--------------------ENCODING--------------------"""
+    # --------------------ENCODING--------------------
     @staticmethod
     def encode_text(text, shift=3):
         return ''.join(chr((ord(char) + shift) % 1114112) for char in text)
@@ -38,7 +38,7 @@ class Caesar:
                 file_to.write(encoded_string.encode(encoding='utf-8'))
             file_to.close()
 
-    """--------------------DECODING--------------------"""
+    # --------------------DECODING--------------------
 
     @staticmethod
     def decode_text(text, shift=3):
